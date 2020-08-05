@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<h1>Add a new patient</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Birthday)
+  @Html.TextBox("Birthday", null, new { type="date"})
+
+  @Html.Label("Select doctor")
+  @Html.DropDownList("DoctorId")
+
+  <input type="submit" value="Add new patient"/>
+}
+
+<p>@Html.ActionLink("View all patients", "Index")</p>
