@@ -20,5 +20,18 @@ namespace DoctorsOffice.Controllers
       List<Doctor> model = _db.Doctors.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Doctor doctor)
+    {
+      _db.Doctors.Add(doctor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
