@@ -1,3 +1,8 @@
+@{
+  Layout = "_Layout";
+}
+
+
 @using DoctorsOffice.Models;
 @model DoctorsOffice.Models.Doctor;
 
@@ -23,3 +28,6 @@ else
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
 <p>@Html.ActionLink("See all doctors", "Index")</p>
+<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId})</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId})</p>
+
