@@ -1,6 +1,7 @@
 using DoctorsOffice.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,6 +37,15 @@ namespace DoctorsOffice.Controllers
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      var thisPatient = _db.Patients
+      .Include(patient => patient.Doctors)
+      .ThenInclude(join => join.Doctor)
+      .FirstOrDefault(patient => patient.PatientId == id);
+      return View(thisPatient);
     }
   }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DoctorsOffice.Models
 {
@@ -11,8 +12,8 @@ namespace DoctorsOffice.Models
 
     public int PatientId { get; set; }
     public string Name { get; set; }
-    public int Birthday { get; set; }
-
+    [DisplayFormat(DataFormatString = "{0:dd MM yyy}")]
+    public System.DateTime Birthday { get; set; }
     public ICollection<DoctorPatient> Doctors { get; }
   }
 }
