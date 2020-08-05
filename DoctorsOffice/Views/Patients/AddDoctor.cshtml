@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<h4>Add a New Doctor</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Doctors)
+  @Html.TextBoxFor(model => Model.Doctors)
+
+  <input type="submit" value="Add New Doctor" class="btn btn-default" />
+}
+
+<p></p>
