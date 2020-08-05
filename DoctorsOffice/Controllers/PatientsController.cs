@@ -47,5 +47,19 @@ namespace DoctorsOffice.Controllers
       .FirstOrDefault(patient => patient.PatientId == id);
       return View(thisPatient);
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisPatient = _db.Patients.FirstOrDefault(patients => patients.PatientId == id);
+      return View(thisPatient);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Patient patient)
+    {
+      _db.Entry(patient).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = patient.PatientId});
+    }
   }
 }
