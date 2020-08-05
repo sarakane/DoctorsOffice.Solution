@@ -1,0 +1,31 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<h2>Patient Details:</h2>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+<h3>@Html.DisplayNameFor(model => model.Birthday.Date): @Html.DisplayFor(model => model.Birthday.Date)</h3>
+
+<h2>This patient sees the following doctors:</h2>
+
+@if(@Model.Doctors.Count == 0)
+{
+  <p>This patient doesn't have any doctors yet.</p>
+}
+else
+{
+  <ul>
+  @foreach(var join in Model.Doctors)
+  {
+    <li>@join.Doctor.Name, @join.Doctor.Specialty</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("See all patients", "Index")</p>
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId})</p>
+<p>@Html.ActionLink("Add doctor", "AddDoctor", new { id = Model.PatientId})</p>
