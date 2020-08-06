@@ -78,6 +78,24 @@ namespace DoctorsOffice.Controllers
       return RedirectToAction("Details", new { id = doctor.DoctorId});
     }
 
+    public ActionResult AddSpecialty(int id)
+    {
+      var thisDoctor = _db.Doctors.FirstOrDefault(doctors => doctors.DoctorId == id);
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
+      return View(thisDoctor);
+    }
+
+    [HttpPost]
+    public ActionResult AddSpecialty(Doctor doctor, int SpecialtyId)
+    {
+      if(SpecialtyId != 0 && !_db.DoctorSpecialty.Any(x => x.SpecialtyId == SpecialtyId  x.DoctorId == doctor.DoctorId))
+      {
+        _db.DoctorSpecialty.Add(new DoctorSpecialty() { SpecialtyId = SpecialtyId, DoctorId = doctor.DoctorId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = doctor.DoctorId });
+    }
+
     public ActionResult Delete(int id)
     {
       var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId == id);
