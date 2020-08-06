@@ -24,8 +24,10 @@ namespace DoctorsOffice.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
       return View();
     }
+
 
     [HttpPost]
     public ActionResult Create(Doctor doctor)

@@ -10,10 +10,10 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
 
-  @Html.LabelFor(model => model.Specialty)
-  @Html.TextBoxFor(model => model.Specialty)
+  @Html.Label("Select Specialty")
+  @Html.DropDownList("SpecialtyId")
 
-  <input type="submit" value="Add new doctor"/>
+  <input type="submit" value="Add New Doctor"/>
 }
 
-<p>@Html.ActionLink("View doctors", "Index")</p>
+<p>@Html.ActionLink("View Doctors", "Index")</p>
