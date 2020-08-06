@@ -8,10 +8,14 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Doctors)
-  @Html.TextBoxFor(model => Model.Doctors)
+
+  @Html.HiddenFor(model => model.PatientId)
+
+  @Html.Label("Select Doctor")
+  @Html.DropDownList("DoctorId")
 
   <input type="submit" value="Add New Doctor" class="btn btn-default" />
 }
 
-<p></p>
+<p>@Html.ActionLink("Back to patient details", "Details", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
