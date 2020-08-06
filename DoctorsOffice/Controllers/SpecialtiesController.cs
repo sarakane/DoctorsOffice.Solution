@@ -19,5 +19,10 @@ namespace DoctorsOffice.Controllers
     {
       return View(_db.Specialties.ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
   }
 }
