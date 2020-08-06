@@ -22,10 +22,16 @@ else
   @foreach(var join in Model.Patients)
   {
     <li>@Html.ActionLink($"{join.Patient.Name}", "Details", "Patients", new { id = join.PatientId})</li>
+    @using (Html.BeginForm("RemovePatient", "Doctors"))
+    {
+      @Html.Hidden("joinId", @join.DoctorPatientId)
+      <input type="submit" value="Remove patient"/>
+    }
   }
   </ul>
 }
 
+<p>@Html.ActionLink("Add patient", "AddPatient", new { id = Model.DoctorId})</P>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
 <p>@Html.ActionLink("See all doctors", "Index")</p>
 <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId})</p>
