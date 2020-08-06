@@ -24,5 +24,17 @@ namespace DoctorsOffice.Controllers
     {
       return View();
     }
+
+    [HttpPost]
+    public ActionResult Create(Specialty specialty)
+    {
+      if(!_db.Specialties.Any(x => x.Name == specialty.Name))
+      {
+        _db.Specialties.Add(specialty);
+        _db.SaveChanges();
+      }
+
+      return RedirectToAction("Index");
+    }
   }
 }
