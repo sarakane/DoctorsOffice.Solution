@@ -13,7 +13,7 @@
 
 @if(@Model.Patients.Count == 0)
 {
-  <p>This doctor doesn't have any patients yet.</p> 
+  <p>This doctor doesn't have any patients yet.</p>
 }
 else
 {
@@ -21,7 +21,7 @@ else
   <ul>
   @foreach(var join in Model.Patients)
   {
-    <li>@join.Patient.Name</li>
+    <li>@Html.ActionLink($"{join.Patient.Name}", "Details", "Patients", new { id = join.PatientId})</li>
   }
   </ul>
 }
@@ -30,4 +30,3 @@ else
 <p>@Html.ActionLink("See all doctors", "Index")</p>
 <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId})</p>
 <p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId})</p>
-
