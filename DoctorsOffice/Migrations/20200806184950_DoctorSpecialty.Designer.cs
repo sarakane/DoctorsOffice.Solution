@@ -3,14 +3,16 @@ using System;
 using DoctorsOffice.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoctorsOffice.Migrations
 {
     [DbContext(typeof(DoctorsOfficeContext))]
-    partial class DoctorsOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20200806184950_DoctorSpecialty")]
+    partial class DoctorSpecialty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,7 +90,7 @@ namespace DoctorsOffice.Migrations
 
                     b.HasKey("SpecialtyId");
 
-                    b.ToTable("Specialties");
+                    b.ToTable("Specialty");
                 });
 
             modelBuilder.Entity("DoctorsOffice.Models.DoctorPatient", b =>
